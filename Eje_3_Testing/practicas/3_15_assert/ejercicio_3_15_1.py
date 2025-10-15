@@ -10,7 +10,9 @@ Reglas que debe verificar:
 def validar_contraseña(contraseña):
     # TU CÓDIGO AQUÍ - Agrega los asserts necesarios
     # Pista: usa len(), any(), isdigit(), isupper()
-    
+    assert len(contraseña) >= 8, "La contraseña debe tener al menos 8 caracteres"
+    assert any(c.isdigit() for c in contraseña), "La contraseña debe contener al menos un número"
+    assert any(c.isupper() for c in contraseña), "La contraseña debe contener al menos una letra mayúscula"
     # Si pasa todas las validaciones
     print("✅ Contraseña válida!")
     return True
@@ -23,6 +25,6 @@ if __name__ == "__main__":
     validar_contraseña("Segura123")
     
     # Deben fallar:
-    # validar_contraseña("corta")      # Muy corta
-    # validar_contraseña("sololetras")   # Sin números
-    # validar_contraseña("12345678")    # Sin mayúsculas
+    validar_contraseña("corta")      # Muy corta
+    validar_contraseña("sololetras")   # Sin números
+    validar_contraseña("12345678")    # Sin mayúsculas
