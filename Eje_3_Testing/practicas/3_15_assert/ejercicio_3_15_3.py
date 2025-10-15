@@ -15,7 +15,9 @@ def agregar_producto(nombre, precio_str, stock_str):
         # - Nombre no vacío
         # - Precio > 0
         # - Stock >= 0
-        
+        assert nombre != "", "El nombre no puede estar vacío"
+        assert precio > 0, "El precio debe ser mayor que 0"
+        assert stock >= 0, "El stock no puede ser negativo"
         print(f"✅ Producto agregado: {nombre}, ${precio}, Stock: {stock}")
         return True
         

@@ -10,21 +10,29 @@ Reglas que debe verificar:
 def validar_contraseña(contraseña):
     # TU CÓDIGO AQUÍ - Agrega los asserts necesarios
     # Pista: usa len(), any(), isdigit(), isupper()
-    assert len(contraseña) >= 8, "La contraseña debe tener al menos 8 caracteres"
-    assert any(c.isdigit() for c in contraseña), "La contraseña debe contener al menos un número"
-    assert any(c.isupper() for c in contraseña), "La contraseña debe contener al menos una letra mayúscula"
-    # Si pasa todas las validaciones
-    print("✅ Contraseña válida!")
-    return True
+    try:
+        assert len(contraseña) >= 8, "La contraseña debe tener al menos 8 caracteres"
+        assert any(c.isdigit() for c in contraseña), "La contraseña debe contener al menos un número"
+        assert any(c.isupper() for c in contraseña), "La contraseña debe contener al menos una letra mayúscula"
+        # Si pasa todas las validaciones
+        print("✅ Contraseña válida!")
+        return True
+    
+    except AssertionError as e:
+        print(f"❌ Contraseña inválida: {e}")
+        return False
+    except Exception as e:
+        print(f"❌ Error inesperado: {e}")
+        return False
 
 # Prueba tu función con estos casos:
 if __name__ == "__main__":
     print("🔒 Probando validador de contraseñas:")
     
     # Debe funcionar
-    validar_contraseña("Segura123")
+    #validar_contraseña("Segura123")
     
     # Deben fallar:
     validar_contraseña("corta")      # Muy corta
-    validar_contraseña("sololetras")   # Sin números
-    validar_contraseña("12345678")    # Sin mayúsculas
+#    validar_contraseña("sololetras")   # Sin números
+#    validar_contraseña("12345678")    # Sin mayúsculas

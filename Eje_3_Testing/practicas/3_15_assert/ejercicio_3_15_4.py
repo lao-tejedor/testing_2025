@@ -9,7 +9,11 @@ def validar_email_completo(email):
         # - Email no vacío
         # - Debe contener '@'
         # - Debe tener un dominio (contener '.' después del '@')
-        
+        assert email != "", "El email no puede estar vacío"
+        assert '@' in email, "El email debe contener '@'"
+        at_index = email.find('@')
+        assert '.' in email[at_index:], "El email debe tener un dominio ('.' después del '@')"
+        assert not email[at_index + 1] == '.', "No puede haber un punto inmediatamente después del '@'"
         # Verifica que no haya espacios
         assert ' ' not in email, "El email no puede contener espacios"
         
